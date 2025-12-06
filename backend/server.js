@@ -55,6 +55,10 @@ app.get('/health', (req, res) => {
   res.json({ success: true, message: 'Server is running' });
 });
 
+// Favicon handler - silently ignore favicon requests
+app.get('/favicon.ico', (req, res) => res.status(204).end());
+app.get('/favicon.png', (req, res) => res.status(204).end());
+
 // 404 handler for undefined routes (must be after all other routes)
 app.use(notFoundHandler);
 
