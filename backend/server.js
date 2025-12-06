@@ -41,16 +41,7 @@ const connectDB = async () => {
 // Connect to database
 connectDB();
 
-// Routes
-app.use('/auth', authRoutes);
-app.use('/', transactionRoutes);
-app.use('/', budgetRoutes);
-app.use('/', subscriptionRoutes);
-app.use('/', portfolioRoutes);
-app.use('/', dashboardRoutes);
-app.use('/', categoryRuleRoutes);
-
-// Root endpoint - API welcome message
+// Root endpoint - API welcome message (must be before other routes)
 app.get('/', (req, res) => {
   res.json({
     success: true,
@@ -77,6 +68,15 @@ app.get('/health', (req, res) => {
 // Favicon handler - silently ignore favicon requests
 app.get('/favicon.ico', (req, res) => res.status(204).end());
 app.get('/favicon.png', (req, res) => res.status(204).end());
+
+// API Routes
+app.use('/auth', authRoutes);
+app.use('/', transactionRoutes);
+app.use('/', budgetRoutes);
+app.use('/', subscriptionRoutes);
+app.use('/', portfolioRoutes);
+app.use('/', dashboardRoutes);
+app.use('/', categoryRuleRoutes);
 
 // 404 handler for undefined routes (must be after all other routes)
 app.use(notFoundHandler);
