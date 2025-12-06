@@ -25,6 +25,6 @@ const userSchema = new mongoose.Schema({
 // Create index on email field for fast lookups
 userSchema.index({ email: 1 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema, 'vaultusers');
 
 export default User;
