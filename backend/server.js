@@ -50,6 +50,25 @@ app.use('/', portfolioRoutes);
 app.use('/', dashboardRoutes);
 app.use('/', categoryRuleRoutes);
 
+// Root endpoint - API welcome message
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Vault Finance API',
+    version: '1.0.0',
+    endpoints: {
+      health: '/health',
+      auth: '/auth/login, /auth/register',
+      transactions: '/transactions',
+      budget: '/budget',
+      subscriptions: '/subscriptions',
+      portfolio: '/portfolio',
+      dashboard: '/dashboard/*',
+      categoryRules: '/category-rules'
+    }
+  });
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ success: true, message: 'Server is running' });
