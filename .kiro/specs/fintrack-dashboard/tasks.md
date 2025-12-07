@@ -580,7 +580,12 @@
 
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 30. Create setup documentation
+- [x] 30. Create setup documentation
+
+
+
+
+
   - Write README with project overview
   - Document environment variable requirements
   - Add installation instructions for backend and frontend
